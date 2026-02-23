@@ -1,0 +1,3 @@
+cd desktop\ルーレット
+
+py -m stramlit run app.py
