@@ -1,10 +1,11 @@
 import streamlit as st
 import pandas as pd
-from datetime import datetime
+from datetime import datetime,timedelta,timezone
 import random
 import os
 import time  
 
+JST = timezone(timedelta(hours=+9), 'JST')
 
 st.set_page_config(page_title="ダイスログ・システム", layout="centered")
 
@@ -62,7 +63,8 @@ else:
             st.error(f"カットインの再生に失敗しました: {e}")
 
         result = random.randint(1, 6)
-        now = datetime.now()
+
+        now = datetime.now(JST)
         time_stamp = now.strftime("%Y/%m/%d %H:%M:%S") 
 
         new_log = {
@@ -91,7 +93,7 @@ else:
         st.download_button(
             label="履歴ファイルを保存",
             data=csv,
-            file_name=f"dice_history_{datetime.now().strftime('%Y%m%d_%H%M')}.csv",
+            file_name=f"dice_history_{datetime.now(JST).strftime('%Y%m%d_%H%M')}.csv",
             mime="text/csv",
         )
     else:
