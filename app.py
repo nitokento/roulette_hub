@@ -34,7 +34,7 @@ if not st.session_state.user_name:
                 st.session_state.user_name = name_input
                 st.rerun()
             else:
-                st.warning("名前を入力しろって書いてあんだろ")
+                st.warning("名前を入力しろ")
 
 else:
     try:
@@ -95,7 +95,7 @@ else:
             pd.DataFrame(new_chat_post).to_csv(chat_file, index=False, header=not os.path.exists(chat_file), mode='a', encoding='utf_8_sig')
 
             st.markdown(f'<p class="big-font">結果：{result}</p>', unsafe_allow_html=True)
-            st.success(f"【{time_stamp}】に記録しました！")
+            st.success(f"【{time_stamp}】に記録しました")
 
         st.divider()
         st.subheader("履歴一覧（最新順）")
@@ -117,7 +117,7 @@ else:
             st.write("まだ履歴はありません。")
 
     with tab2:
-        st.subheader("💬 掲示板スレッド")
+        st.subheader("💬 掲示板")
         chat_user = st.text_input("名前", value="", placeholder="風吹けばベーデン・パウエル")
         chat_message = st.text_area("メッセージ", placeholder="書き込み内容を入力してください", height=100)
         
@@ -143,7 +143,7 @@ else:
             if os.path.exists(chat_file):
                 df_chat_log = pd.read_csv(chat_file)
                 for i, row in df_chat_log.iloc[::-1].iterrows():
-                    # システム通知（HTMLタグが含まれている場合）の判定
+                    
                     if "<div" in str(row['メッセージ']):
                         st.markdown(row['メッセージ'], unsafe_allow_html=True)
                     else:
