@@ -135,16 +135,7 @@ else:
                 }
                 pd.DataFrame(new_post).to_csv(chat_file, index=False, header=not os.path.exists(chat_file), mode='a', encoding='utf_8_sig')
                 st.rerun()
-                with tab2:
-                 st.subheader("💬 掲示板")
-                col_c1, col_c2 = st.columns(2)
-                with col_c1:
-                 if st.button("書き込む", use_container_width=True):
-             
-                  with col_c2:
-                   if st.button("🔄 ログを更新", use_container_width=True):
-                                  st.rerun() 
-
+               
         st.divider()
         st.write("▼ 掲示板ログ")
         
