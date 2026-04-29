@@ -135,9 +135,7 @@ else:
                 }
                 pd.DataFrame(new_post).to_csv(chat_file, index=False, header=not os.path.exists(chat_file), mode='a', encoding='utf_8_sig')
                 st.rerun()
-               
-        st.divider()
-        st.write("▼ 掲示板ログ")
+
         
 
         st.divider()
